@@ -22,10 +22,6 @@ public class HamtaMeddelandeIntegrationTest extends AbstractTestCase {
 	
 	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(HamtaMeddelandeIntegrationTest.class);
-	
- 
-	private static final String EXPECTED_ERR_TIMEOUT_MSG = "Read timed out";
- 
 
 	private static final String DEFAULT_SERVICE_ADDRESS = getAddress("HAMTAMEDDELANDE_INBOUND_URL");
  
