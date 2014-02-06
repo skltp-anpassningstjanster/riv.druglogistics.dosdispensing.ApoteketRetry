@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mule 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core    http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+		http://www.mulesoft.org/schema/mule/http    http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+		http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
+	">
+
+    <spring:bean name="retry-bean" class="se.skltp.adapterservices.druglogistics.dosdispensing.RetryComponent">
+        <spring:property name="maxRetries" value="${MAX_RETRIES}" />
+        <spring:property name="retryWait" value="${RETRY_WAIT}" />
+        <spring:property name="timeout" value="${SERVICE_TIMEOUT_MS}" />
+
+        <spring:property name="endpointAddress" value="${HAMTAMEDDELANDE_OUTBOUND_URL}" />
+        <spring:property name="soapAction" value="${SOAP_ACTION}" />
+
+        <spring:property name="keystorePath" value="${KEYSTORE_PATH}" />
+        <spring:property name="keystoreType" value="${KEYSTORE_TYPE}" />
+        <spring:property name="keystorePassword" value="${kEYSTORE_PASSWORD}" />
+        <spring:property name="truststorePath" value="${TRUSTSTORE_PATH}" />
+        <spring:property name="truststoreType" value="${TRUSTSTORE_TYPE}" />
+        <spring:property name="truststorePassword" value="${TRUSTSTORE_PASSWORD}" />
+    </spring:bean>
+
+	<flow name="hamtaMeddelanden-service-inbound" doc:name="hamtaMeddelanden-service-inbound">
+
+		<http:inbound-endpoint
+            connector-ref="soitoolkit-http-connector"
+			address="${HAMTAMEDDELANDE_INBOUND_URL}"
+			exchange-pattern="request-response"
+			transformer-refs="objToStr logReqIn"
+			responseTransformer-refs="logRespOut" doc:name="HTTP"/>
+			
+        <component doc:name="Java" >
+			<spring-object bean="retry-bean"/>
+        </component>
+        
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+        	<custom-transformer class="se.skltp.adapterservices.druglogistics.dosdispensing.CreateSoapFaultIfExceptionTransformer" />
+        	<transformer ref="logRespOut" />
+        </catch-exception-strategy>
+		
+	</flow>
+	
+</mule>

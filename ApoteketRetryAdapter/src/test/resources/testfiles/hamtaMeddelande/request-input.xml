@@ -1,0 +1,30 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <ns4:To xmlns:ns4="http://www.w3.org/2005/08/addressing" xmlns:ns3="urn:riv:druglogistics:dosedispensing:AvbestallOrginalforpackningResponder:1" xmlns:ns2="urn:riv:druglogistics:dosedispensing:1" xmlns="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1">APO-BAMYL</ns4:To>
+  </soap:Header>
+  <soap:Body>
+    <HamtaMeddelanden xmlns="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1" xmlns:ns2="urn:riv:druglogistics:dosedispensing:1" xmlns:ns3="urn:riv:druglogistics:dosedispensing:AvbestallOrginalforpackningResponder:1" xmlns:ns4="http://www.w3.org/2005/08/addressing">
+      <glnkod>1111111111</glnkod>
+      <Behorighetsinformation>
+        <ns2:fornamn>Lindsey</ns2:fornamn>
+        <ns2:efternamn>Pärlemo</ns2:efternamn>
+        <ns2:forskrivarkod>9001033</ns2:forskrivarkod>
+        <ns2:yrkeskod>LK</ns2:yrkeskod>
+        <ns2:arbetsplatskod>20131015422</ns2:arbetsplatskod>
+        <ns2:hsaid>TSE165565594230-9999</ns2:hsaid>
+      </Behorighetsinformation>
+      <Meddelandenutval>
+        <ns2:Meddelandetyp>PB</ns2:Meddelandetyp>
+        <ns2:Patientinformation>
+          <ns2:fornamn>x</ns2:fornamn>
+          <ns2:mellannamn>x</ns2:mellannamn>
+          <ns2:efternamn>x</ns2:efternamn>
+          <ns2:identitetstyp>P</ns2:identitetstyp>
+          <ns2:personid>190211139803</ns2:personid>
+        </ns2:Patientinformation>
+        <ns2:meddelandestatus>LO</ns2:meddelandestatus>
+        <ns2:forskrivarkod>9001033</ns2:forskrivarkod>
+      </Meddelandenutval>
+    </HamtaMeddelanden>
+  </soap:Body>
+</soap:Envelope>

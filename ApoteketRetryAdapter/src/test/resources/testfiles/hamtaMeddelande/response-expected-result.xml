@@ -1,0 +1,39 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <HamtaMeddelandenResponse xmlns="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1" xmlns:ns2="urn:riv:druglogistics:dosedispensing:1" xmlns:ns3="urn:riv:druglogistics:dosedispensing:SokVardandeEnhetResponder:1" xmlns:ns4="http://www.w3.org/2005/08/addressing">
+         <resultatkod>Resultatkod</resultatkod>
+         <meddelandetext>Meddelande text</meddelandetext>
+         <meddelandeid>0</meddelandeid>
+         <Meddelanden>
+            <ns2:meddelandeid>Meddelandeid</ns2:meddelandeid>
+            <ns2:Patientinformation>
+               <ns2:fornamn>Tolvan</ns2:fornamn>
+               <ns2:mellannamn>Tolv</ns2:mellannamn>
+               <ns2:efternamn>Tolvansson</ns2:efternamn>
+               <ns2:identitetstyp>P</ns2:identitetstyp>
+               <ns2:personid>191212121212</ns2:personid>
+               <ns2:lanskod>Landskod</ns2:lanskod>
+               <ns2:kommunkod>Kommunkod</ns2:kommunkod>
+            </ns2:Patientinformation>
+            <ns2:kommunikationsriktning>0</ns2:kommunikationsriktning>
+            <ns2:ordinationsid>Ordinationsid</ns2:ordinationsid>
+            <ns2:glnkod>GLN-KOD</ns2:glnkod>
+            <ns2:dosapoteknamn>DOS-APOTEKETES NAMN</ns2:dosapoteknamn>
+            <ns2:sandningstidpunkt>2013-12-30T12:08:52.648+01:00</ns2:sandningstidpunkt>
+            <ns2:sandarefornamn>Sandare fornamn</ns2:sandarefornamn>
+            <ns2:sandareefternamn>Sandare efternamn</ns2:sandareefternamn>
+            <ns2:sandarehsaid>Sandare hsaid</ns2:sandarehsaid>
+            <ns2:sandareyrkeskod>LK</ns2:sandareyrkeskod>
+            <ns2:sandarearbetsplats>Sandare arbetsplats</ns2:sandarearbetsplats>
+            <ns2:rubrik>Rubrik</ns2:rubrik>
+            <ns2:prioritet>H</ns2:prioritet>
+            <ns2:meddelandestatus>O</ns2:meddelandestatus>
+            <ns2:meddelandestatusfornamn>Meddelandestatus fornamn</ns2:meddelandestatusfornamn>
+            <ns2:meddelandestatusefternamn>Meddelandestatus efternamn</ns2:meddelandestatusefternamn>
+            <ns2:meddelandestatusarbetsplats>Meddelandestatus arbetsplats</ns2:meddelandestatusarbetsplats>
+            <ns2:statustidpunkt>2013-12-30T12:08:52.649+01:00</ns2:statustidpunkt>
+            <ns2:meddelande>Meddelande text</ns2:meddelande>
+         </Meddelanden>
+      </HamtaMeddelandenResponse>
+   </soap:Body>
+</soap:Envelope>

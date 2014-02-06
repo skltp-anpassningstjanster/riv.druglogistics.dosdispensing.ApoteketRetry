@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="ApoteketRetryAdapter" resourceRoot="" soapui-version="4.6.2" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="HamtaMeddelandenResponderBinding" type="wsdl" bindingName="{urn:riv:druglogistics:dosedispensing:HamtaMeddelanden:1:rivtabp20}HamtaMeddelandenResponderBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8081/ApoteketRetryAdapter/services/hamtaMeddelande/v1?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8081/ApoteketRetryAdapter/services/hamtaMeddelande/v1?wsdl"><con:part><con:url>http://localhost:8081/ApoteketRetryAdapter/services/hamtaMeddelande/v1?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="HamtaMeddelandenInteraction" targetNamespace="urn:riv:druglogistics:dosedispensing:HamtaMeddelanden:1:rivtabp20" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tjsi="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenInitiator:1" xmlns:tjsr="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1" xmlns:tns="urn:riv:druglogistics:dosedispensing:HamtaMeddelanden:1:rivtabp20" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema targetNamespace="urn:riv:druglogistics:dosedispensing:HamtaMeddelanden:1:rivtabp20">
+      <xs:import namespace="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1" schemaLocation="http://localhost:8081/ApoteketRetryAdapter/services/hamtaMeddelande/v1?xsd=HamtaMeddelandenResponder_1.0.xsd"/>
+      <xs:import namespace="http://www.w3.org/2005/08/addressing" schemaLocation="http://localhost:8081/ApoteketRetryAdapter/services/hamtaMeddelande/v1?xsd=../../core_components/ws-addressing-1.0.xsd"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="HamtaMeddelandenRequest">
+    <wsdl:part element="wsa:To" name="LogicalAddress"></wsdl:part>
+    <wsdl:part element="tjsr:HamtaMeddelanden" name="parameters"></wsdl:part>
+    <xs:annotation>
+      <xs:documentation>LogicalAddress is the organization number of the business partner (e.g. the org. no. of Apoteket AB).</xs:documentation>
+    </xs:annotation>
+  </wsdl:message>
+  <wsdl:message name="HamtaMeddelandenResponse">
+    <wsdl:part element="tjsr:HamtaMeddelandenResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="HamtaMeddelandenResponderInterface">
+    <wsdl:operation name="HamtaMeddelanden">
+      <wsdl:input message="tns:HamtaMeddelandenRequest"></wsdl:input>
+      <wsdl:output message="tns:HamtaMeddelandenResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HamtaMeddelandenResponderBinding" type="tns:HamtaMeddelandenResponderInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="HamtaMeddelanden">
+      <soap:operation soapAction="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1:HamtaMeddelanden" style="document"/>
+      <wsdl:input>
+        <soap:header message="tns:HamtaMeddelandenRequest" part="LogicalAddress" use="literal"></soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HamtaMeddelandenResponderService">
+    <wsdl:port binding="tns:HamtaMeddelandenResponderBinding" name="HamtaMeddelandenResponderPort">
+      <soap:address location="http://localhost:8081/ApoteketRetryAdapter/services/hamtaMeddelande/v1"/>
+    </wsdl:port>
+  </wsdl:service>
+  <xs:annotation>
+    <xs:documentation>Tjänsteinteraktionens namn: HamtaMeddelandenInteraction
+			 Beskrivning: 
+			   
+			 Revisioner: 
+			 Tjänstedomän: druglogistics:dosedispensing
+			 Tjänsteinteraktionstyp: Fråga-Svar
+			 WS-profil: RIVTABP20
+			 Förvaltas av: Sveriges Kommuner och Landsting</xs:documentation>
+  </xs:annotation>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8081/ApoteketRetryAdapter/services/hamtaMeddelande/v1?xsd=HamtaMeddelandenResponder_1.0.xsd</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.-->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1" version="1.0" xmlns:core="urn:riv:druglogistics:dosedispensing:1" xmlns:tns="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="urn:riv:druglogistics:dosedispensing:1" schemaLocation="http://localhost:8081/ApoteketRetryAdapter/services/hamtaMeddelande/v1?xsd=../../core_components/druglogistics_dosedispensing_1.0.xsd"/>
+  <xs:element name="HamtaMeddelanden" type="tns:HamtaMeddelandenType"/>
+  <xs:element name="HamtaMeddelandenResponse" type="tns:HamtaMeddelandenResponseType"/>
+  <xs:complexType name="HamtaMeddelandenType">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="glnkod" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="Behorighetsinformation" type="core:BehorighetsinfoRequest"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="Meddelandenutval" type="core:MeddelandenutvalRequest"></xs:element>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HamtaMeddelandenResponseType">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="resultatkod" type="core:ResultatkodEnum"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="meddelandetext" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="meddelandeid" type="xs:int"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Meddelanden" type="core:HamtaMeddelandeninfoResponse"></xs:element>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:8081/ApoteketRetryAdapter/services/hamtaMeddelande/v1?xsd=../../core_components/druglogistics_dosedispensing_1.0.xsd</con:url><con:content><![CDATA[<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:riv:druglogistics:dosedispensing:1" version="1.0" xmlns="urn:riv:druglogistics:dosedispensing:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:documentation>Beskrivning: Meddelandetyper som ar gemensamma for ior.
+            Revisioner: 2011-04-05, version 1.0.1
+            Revisioner: 2011-05-15, version 1.0.2
+            Revisioner: 2011-06-02, version 1.0.3
+            Revisioner: 2011-09-08, version 1.0.4
+            Revisioner: 2011-10-10, version 1.0.5</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="SomeElementType">
+    <xs:sequence>
+      <xs:element name="SomeElement" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PatientinfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="fornamn" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Anvandarens fornamn.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="mellannamn" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Anvandarens mellanamn.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="1" name="efternamn" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Anvandarens efternamn.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="1" name="identitetstyp" type="IdentitetstypEnum">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="1" name="personid" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Anvandarens personid</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="lanskod" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Anvandarens folkbokforda lanskod</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="kommunkod" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Anvandarens folkbokforda kommunkod</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KontaktinfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PALforskrivarkod" type="xs:string"/>
+      <xs:element minOccurs="0" name="PALfornamn" type="xs:string"/>
+      <xs:element minOccurs="0" name="PALefternamn" type="xs:string"/>
+      <xs:element minOccurs="0" name="anhorigkontaktnamn" type="xs:string"/>
+      <xs:element minOccurs="0" name="anhorigkontaktemail" type="xs:string"/>
+      <xs:element minOccurs="0" name="ansvarigkontaktnamn" type="xs:string"/>
+      <xs:element minOccurs="0" name="ansvarigkontaktemail" type="xs:string"/>
+      <xs:element minOccurs="0" name="ansvarigkontaktadress" type="xs:string"/>
+      <xs:element minOccurs="0" name="ansvarigkontaktpostnummer" type="xs:string"/>
+      <xs:element minOccurs="0" name="ansvarigkontaktpostort" type="xs:string"/>
+      <xs:element minOccurs="0" name="ansvarigkontakttelefon1" type="xs:string"/>
+      <xs:element minOccurs="0" name="ansvarigkontakttelefon2" type="xs:string"/>
+      <xs:element minOccurs="0" name="vardandeenhetid" type="xs:string"/>
+      <xs:element minOccurs="0" name="vardandeenhetnamn" type="xs:string"/>
+      <xs:element minOccurs="0" name="vardandeenhetpostort" type="xs:string"/>
+      <xs:element minOccurs="0" name="vardandeenhetpostnummer" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BestallningsinfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="bestallningsid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="radid" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="Patientinformation" type="PatientinfoResponse"></xs:element>
+      <xs:element minOccurs="0" name="NPLpackid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="varunummer" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="receptid" type="xs:string"></xs:element>
+      <xs:element minOccurs="1" name="ordinationsid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="dosunderlagsversion" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="bestallningsresultat" type="xs:int"></xs:element>
+      <xs:element minOccurs="0" name="bestallningsresultattext" type="xs:string"></xs:element>
+      <xs:element minOccurs="1" name="bestallningsstatus" type="BestallningsStatusEnum"></xs:element>
+      <xs:element minOccurs="1" name="statustidpunkt" type="xs:dateTime"></xs:element>
+      <xs:element minOccurs="0" name="bestallningstatustext" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="meddelandefranapotek" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="onskadleveranstid" type="xs:dateTime"></xs:element>
+      <xs:element minOccurs="0" name="planeradleveranstid" type="xs:dateTime"></xs:element>
+      <xs:element minOccurs="0" name="dosmottagareid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="dosmottagarenamn" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="bestallningstid" type="xs:dateTime"></xs:element>
+      <xs:element minOccurs="1" name="bestallarefornamn" type="xs:string"></xs:element>
+      <xs:element minOccurs="1" name="bestallareefternamn" type="xs:string"></xs:element>
+      <xs:element minOccurs="1" name="bestallarearbetsplats" type="xs:string"></xs:element>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BehorighetsinfoRequest">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="fornamn" type="xs:string"/>
+      <xs:element minOccurs="1" name="efternamn" type="xs:string"/>
+      <xs:element minOccurs="0" name="forskrivarkod" type="xs:string"/>
+      <xs:element minOccurs="0" name="yrkeskod" type="YrkesKodEnum"/>
+      <xs:element minOccurs="1" name="arbetsplatskod" type="xs:string"/>
+      <xs:element minOccurs="0" name="hsaid" type="xs:string"/>
+      <xs:element minOccurs="0" name="personnummer" type="xs:string"/>
+      <xs:element minOccurs="0" name="organisationsnummer" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BestallningsutvalRequest">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="bestallningsurval" type="BestallningsurvalEnum"></xs:element>
+      <xs:element minOccurs="0" name="bestallningsid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="patientid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="patientidtyp" type="IdentitetstypEnum"></xs:element>
+      <xs:element minOccurs="0" name="patientfornamn" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="patientefternamn" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="vardgivarid" type="xs:string"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="dosmottagareid" type="xs:string"></xs:element>
+      <xs:element minOccurs="1" name="bestallningsstatus" type="BestallningsStatusEnum"></xs:element>
+      <xs:element minOccurs="1" name="frandatum" type="xs:dateTime"></xs:element>
+      <xs:element minOccurs="1" name="tilldatum" type="xs:dateTime"></xs:element>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AvbestallningsinfoRequest">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="Patientinformation" type="PatientinfoResponse"></xs:element>
+      <xs:element minOccurs="1" name="bestallningsid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="radid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="NPLpackid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="varunummer" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="receptid" type="xs:string"></xs:element>
+      <xs:element minOccurs="1" name="ordinationsid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="dosunderlagsversion" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="meddelandetillapotek" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="onskadleveranstid" type="xs:dateTime"></xs:element>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BestallningsinfoRequest">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="Patientinformation" type="PatientinfoResponse"></xs:element>
+      <xs:element minOccurs="1" name="bestallningsid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="radid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="NPLpackid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="varunummer" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="receptid" type="xs:string"></xs:element>
+      <xs:element minOccurs="1" name="ordinationsid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="dosunderlagsversion" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="antalforpackningar" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="akutbestallning" type="xs:boolean"></xs:element>
+      <xs:element minOccurs="0" name="maxveckodos" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="maxdygnsdos" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="dosmottagareid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="dosmottagarenamn" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="meddelandetillapotek" type="xs:string"></xs:element>
+      <xs:element minOccurs="1" name="onskadleveransdatum" type="xs:dateTime"></xs:element>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProduktionsinfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dosaktor" type="xs:string"/>
+      <xs:element minOccurs="1" name="dosapotek" type="xs:string"/>
+      <xs:element minOccurs="1" name="dosapotekid" type="xs:string"/>
+      <xs:element minOccurs="0" name="stopptidbestallning" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="stopptidordination" type="xs:dateTime"/>
+      <xs:element minOccurs="1" name="forstadosdag" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="dosvecka" type="xs:string"/>
+      <xs:element minOccurs="1" name="doseringsschema" type="DoseringsschemaResponse"/>
+      <xs:element minOccurs="0" name="dosmottagareid" type="xs:string"/>
+      <xs:element minOccurs="0" name="dosmottagarenamn" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--<xs:complexType name="SarskilltboendeinfoResponse">-->
+  <xs:complexType name="LeveransadressinfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="boendeenhetnamn" type="xs:string"/>
+      <xs:element minOccurs="1" name="boendeenhetid" type="xs:string"/>
+      <xs:element minOccurs="1" name="boendeenhetadress" type="xs:string"/>
+      <xs:element minOccurs="1" name="boendeenhetpostnummer" type="xs:string"/>
+      <xs:element minOccurs="1" name="boendeenhetpostort" type="xs:string"/>
+      <xs:element minOccurs="0" name="boendeenhetavdelning" type="xs:string"/>
+      <xs:element minOccurs="1" name="arbetsplatskod" type="xs:string"/>
+      <xs:element minOccurs="0" name="dosmottagareid" type="xs:string"/>
+      <xs:element minOccurs="0" name="dosmottagarenamn" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DoseringsschemaResponse">
+    <xs:sequence>
+      <xs:element name="periodlangd" nillable="false" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Antal dagar som dosering skall galla.
+                        Vid regelbunden dosering anges periodlangd = 1
+                        Vid oregelbunden dosering anges antal dagar som intervallet omfattar.
+                        Exempelvis 2 om intag ska ske varannan dag.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" name="intagstillfalle" nillable="false" type="IntagstillfalleResponse">
+        <xs:annotation>
+          <xs:documentation>Beskriver tid och mangd for intag av lakemedel.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IntagstillfalleResponse">
+    <xs:sequence>
+      <xs:element name="intagstillfalle" nillable="false" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Klockslag nar patienten ska inta medicinering.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="intagsmangd" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>Intagsmangd per tillfalle</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dagIPeriod" nillable="false" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Dag i perioden nar intag skall goras.
+
+                        Exempel: Intag ska ske varje mandag och onsdag och startdatum ar pa en mandag. Mandag Insattningsdatum = 2010-01-01, Periodlangd=7, Dag
+                        i period= 1. Onsdag Insattningsdatum = 2010-01-01, Periodlangd=7, Dag i period=3.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BoendeinfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="adress" type="xs:string"/>
+      <xs:element minOccurs="0" name="postnummer" type="xs:string"/>
+      <xs:element minOccurs="0" name="ort" type="xs:string"/>
+      <xs:element minOccurs="0" name="telefon" type="xs:string"/>
+      <xs:element minOccurs="0" name="dosmottagareid" type="xs:string"/>
+      <xs:element minOccurs="0" name="dosmottagarenamn" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BetalningsinfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="form" type="xs:string"/>
+      <xs:element minOccurs="0" name="information" type="xs:string"/>
+      <xs:element minOccurs="0" name="betalningsansvarigfornamn" type="xs:string"/>
+      <xs:element minOccurs="0" name="betalningsansvarigefternamn" type="xs:string"/>
+      <xs:element minOccurs="0" name="betalningsansvarigadress" type="xs:string"/>
+      <xs:element minOccurs="0" name="betalningsansvarigpostnummer" type="xs:string"/>
+      <xs:element minOccurs="0" name="betalningsansvarigort" type="xs:string"/>
+      <xs:element minOccurs="0" name="betalningsansvarigtelefon" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HamtaMeddelandeninfoResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="meddelandeid" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="Patientinformation" type="PatientinfoResponse"></xs:element>
+      <xs:element minOccurs="0" name="kommunikationsriktning" type="KommunikationsriktningEnum"></xs:element>
+      <xs:element minOccurs="0" name="tidigaremeddelandeid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="ordinationsid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="glnkod" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="dosapoteknamn" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="sandningstidpunkt" type="xs:dateTime"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="sandarefornamn" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="sandareefternamn" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="sandarehsaid" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="sandareyrkeskod" type="YrkesKodEnum"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="sandarearbetsplats" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="rubrik" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="prioritet" type="MeddelandePrioritetEnum"></xs:element>
+      <xs:element minOccurs="1" name="meddelandestatus" type="MeddelandeStatusEnum"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="meddelandestatusfornamn" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="meddelandestatusefternamn" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="meddelandestatusarbetsplats" type="xs:string"></xs:element>
+      <xs:element minOccurs="1" name="statustidpunkt" type="xs:dateTime"></xs:element>
+      <xs:element minOccurs="1" name="meddelande" type="xs:string"></xs:element>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MeddelandeninfoRequest">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="Meddelandetyp" type="MeddelandetypEnum"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="Patientinformation" type="PatientinfoResponse"></xs:element>
+      <xs:element minOccurs="0" name="kommunikationsriktning" type="KommunikationsriktningEnum"></xs:element>
+      <xs:element minOccurs="0" name="tidigaremeddelandeid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="ordinationsid" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="glnkod" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="sandningstidpunkt" type="xs:dateTime"></xs:element>
+      <xs:element minOccurs="0" name="rubrik" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="prioritet" type="MeddelandePrioritetEnum"></xs:element>
+      <xs:element minOccurs="1" name="meddelande" type="xs:string"></xs:element>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UppdateraMeddelandestatus">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="meddelandeid" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="meddelandestatus" type="MeddelandeStatusEnum"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="statustidpunkt" type="xs:dateTime"></xs:element>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MeddelandenutvalRequest">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="Meddelandetyp" type="MeddelandetypEnum"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="Patientinformation" type="PatientinfoResponse"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="meddelandeid" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="meddelandestatus" type="MeddelandeStatusEnum"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="ordinationsid" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="vardgivarespersonid" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="forskrivarkod" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="frantid" type="xs:dateTime"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="tilltid" type="xs:dateTime"></xs:element>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Vardtagarinformation">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="hemmaboende" type="xs:boolean"></xs:element>
+      <xs:element minOccurs="1" name="dosapoteksid" type="xs:string"></xs:element>
+      <xs:element minOccurs="1" name="dosapoteknamn" type="xs:string"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="forstadosdag" type="xs:dateTime"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="avvikandedosschema" type="xs:boolean"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="Patientinformation" type="PatientinfoResponse"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="Hemmaboendeinformation" type="BoendeinfoResponse"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="Tillfalligadress" type="BoendeinfoResponse"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="Leveransadressinformation" type="LeveransadressinfoResponse"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="1" name="Kontaktinformation" type="KontaktinfoResponse"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="Betalningsinformation" type="BetalningsinfoResponse"></xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="Produktionsinfo" type="ProduktionsinfoResponse"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Vardtagarstatus" type="Vardtagarstatusinfo"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="vilandestatusorsak" type="xs:string"></xs:element>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VardandeEnhetResponse">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="vardandeenhetid" type="xs:string"></xs:element>
+      <xs:element minOccurs="1" name="vardandeenhetnamn" type="xs:string"></xs:element>
+      <xs:element minOccurs="1" name="vardandeenhetpostort" type="xs:string"></xs:element>
+      <xs:element minOccurs="1" name="glnkod" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProduktsortimentResponse">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="nplid" type="xs:string"></xs:element>
+      <xs:element minOccurs="1" name="nplpackid" type="xs:string"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="glnkod" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Vardtagarstatusinfo">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="statuskod" type="VardtagarStatusEnum"></xs:element>
+      <xs:element minOccurs="0" name="frantid" type="xs:dateTime"></xs:element>
+      <xs:element minOccurs="0" name="tilltid" type="xs:dateTime"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ApplicationException">
+    <xs:annotation>
+      <xs:documentation>Applikationsfel</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SystemException">
+    <xs:annotation>
+      <xs:documentation>Systemfel</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>Bestallningsstatus 1=Mottagen, 2=Avvisad 3=Expedierad, 4=Avbestalld 5=Samtliga status</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="BestallningsStatusEnum">
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="4"/>
+      <xs:enumeration value="5"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:annotation>
+    <xs:documentation>Bestallningsurval PU=Personurval, DM=Dosmottagare , BU=Bestallning , VG=Vardgivare</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="BestallningsurvalEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PU"/>
+      <xs:enumeration value="DM"/>
+      <xs:enumeration value="BU"/>
+      <xs:enumeration value="VG"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:annotation>
+    <xs:documentation>Meddelandetyp OB=Ordinationsbundet, PB=Personbundet FR=Fristaende, MB=Meddelandebundet</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="MeddelandetypEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OB"/>
+      <xs:enumeration value="PB"/>
+      <xs:enumeration value="FR"/>
+      <xs:enumeration value="MB"/>
+      <xs:enumeration value="VG"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:annotation>
+    <xs:documentation>Meddelandeprioritet L=Lag, N=Normal, H=Hog</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="MeddelandePrioritetEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="L"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="H"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:annotation>
+    <xs:documentation>Meddelandestatus L=Last, O=Olast, B=Borttaget</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="MeddelandeStatusEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="L"/>
+      <xs:enumeration value="O"/>
+      <xs:enumeration value="B"/>
+      <xs:enumeration value="BLO"/>
+      <xs:enumeration value="LO"/>
+      <xs:enumeration value="BL"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:annotation>
+    <xs:documentation>Vardtagarstatus 1=Aktiv, 2=Vilande, 3=Tillfallig adressandring, 4=Avford, 5=Avliden 6=Ej Registrerad</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="VardtagarStatusEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="4"/>
+      <xs:enumeration value="5"/>
+      <xs:enumeration value="6"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:annotation>
+    <xs:documentation>Identitetstyp P=Personnummer, R=Reservnummer, S=Samordningsnummer</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="IdentitetstypEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="P"/>
+      <xs:enumeration value="R"/>
+      <xs:enumeration value="S"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:annotation>
+    <xs:documentation>Yrkeskod LK=Lakare, TL=Tandlakare, BM=Barnmorska, SJ=Sjukskoterska, RS=Rontgensjuksokterska, TH=Tandhygenist</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="YrkesKodEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LK"/>
+      <xs:enumeration value="TL"/>
+      <xs:enumeration value="BM"/>
+      <xs:enumeration value="SJ"/>
+      <xs:enumeration value="RS"/>
+      <xs:enumeration value="TH"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:annotation>
+    <xs:documentation>Kommunikationsriktning 1=Till Dosapotek, 2=Fran Dosapotek</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="KommunikationsriktningEnum">
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:annotation>
+    <xs:documentation>Resultatkod 1=Information, 2=Varning 3=Fel</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="ResultatkodEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:8081/ApoteketRetryAdapter/services/hamtaMeddelande/v1?xsd=../../core_components/ws-addressing-1.0.xsd</con:url><con:content><![CDATA[<!--W3C XML Schema defined in the Web Services Addressing 1.0 specification
+    http://www.w3.org/TR/ws-addr-core
+
+   Copyright �� 2005 World Wide Web Consortium,
+
+   (Massachusetts Institute of Technology, European Research Consortium for
+   Informatics and Mathematics, Keio University). All Rights Reserved. This
+   work is distributed under the W3C�� Software License [1] in the hope that
+   it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+   warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+   [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+
+   $Id: ws-addr.xsd,v 1.4 2008/07/14 18:48:47 plehegar Exp $-->
+<xs:schema attributeFormDefault="unqualified" blockDefault="#all" elementFormDefault="qualified" finalDefault="" targetNamespace="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.w3.org/2005/08/addressing" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!--Constructs from the WS-Addressing Core-->
+  <xs:element name="EndpointReference" type="tns:EndpointReferenceType"/>
+  <xs:complexType mixed="false" name="EndpointReferenceType">
+    <xs:sequence>
+      <xs:element name="Address" type="tns:AttributedURIType"/>
+      <xs:element minOccurs="0" name="ReferenceParameters" type="tns:ReferenceParametersType"/>
+      <xs:element minOccurs="0" ref="tns:Metadata"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+  <xs:complexType mixed="false" name="ReferenceParametersType">
+    <xs:sequence>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xs:sequence>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+  <xs:element name="Metadata" type="tns:MetadataType"/>
+  <xs:complexType mixed="false" name="MetadataType">
+    <xs:sequence>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xs:sequence>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+  <xs:element name="MessageID" type="tns:AttributedURIType"/>
+  <xs:element name="RelatesTo" type="tns:RelatesToType"/>
+  <xs:complexType mixed="false" name="RelatesToType">
+    <xs:simpleContent>
+      <xs:extension base="xs:anyURI">
+        <xs:attribute default="http://www.w3.org/2005/08/addressing/reply" name="RelationshipType" type="tns:RelationshipTypeOpenEnum" use="optional"/>
+        <xs:anyAttribute namespace="##other" processContents="lax"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="RelationshipTypeOpenEnum">
+    <xs:union memberTypes="tns:RelationshipType xs:anyURI "/>
+  </xs:simpleType>
+  <xs:simpleType name="RelationshipType">
+    <xs:restriction base="xs:anyURI">
+      <xs:enumeration value="http://www.w3.org/2005/08/addressing/reply"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReplyTo" type="tns:EndpointReferenceType"/>
+  <xs:element name="From" type="tns:EndpointReferenceType"/>
+  <xs:element name="FaultTo" type="tns:EndpointReferenceType"/>
+  <xs:element name="To" type="tns:AttributedURIType"/>
+  <xs:element name="Action" type="tns:AttributedURIType"/>
+  <xs:complexType mixed="false" name="AttributedURIType">
+    <xs:simpleContent>
+      <xs:extension base="xs:anyURI">
+        <xs:anyAttribute namespace="##other" processContents="lax"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <!--Constructs from the WS-Addressing SOAP binding-->
+  <xs:attribute name="IsReferenceParameter" type="xs:boolean"/>
+  <xs:simpleType name="FaultCodesOpenEnumType">
+    <xs:union memberTypes="tns:FaultCodesType xs:QName "/>
+  </xs:simpleType>
+  <xs:simpleType name="FaultCodesType">
+    <xs:restriction base="xs:QName">
+      <xs:enumeration value="tns:InvalidAddressingHeader"/>
+      <xs:enumeration value="tns:InvalidAddress"/>
+      <xs:enumeration value="tns:InvalidEPR"/>
+      <xs:enumeration value="tns:InvalidCardinality"/>
+      <xs:enumeration value="tns:MissingAddressInEPR"/>
+      <xs:enumeration value="tns:DuplicateMessageID"/>
+      <xs:enumeration value="tns:ActionMismatch"/>
+      <xs:enumeration value="tns:MessageAddressingHeaderRequired"/>
+      <xs:enumeration value="tns:DestinationUnreachable"/>
+      <xs:enumeration value="tns:ActionNotSupported"/>
+      <xs:enumeration value="tns:EndpointUnavailable"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RetryAfter" type="tns:AttributedUnsignedLongType"/>
+  <xs:complexType mixed="false" name="AttributedUnsignedLongType">
+    <xs:simpleContent>
+      <xs:extension base="xs:unsignedLong">
+        <xs:anyAttribute namespace="##other" processContents="lax"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:element name="ProblemHeaderQName" type="tns:AttributedQNameType"/>
+  <xs:complexType mixed="false" name="AttributedQNameType">
+    <xs:simpleContent>
+      <xs:extension base="xs:QName">
+        <xs:anyAttribute namespace="##other" processContents="lax"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:element name="ProblemHeader" type="tns:AttributedAnyType"/>
+  <xs:complexType mixed="false" name="AttributedAnyType">
+    <xs:sequence>
+      <xs:any maxOccurs="1" minOccurs="1" namespace="##any" processContents="lax"/>
+    </xs:sequence>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+  <xs:element name="ProblemIRI" type="tns:AttributedURIType"/>
+  <xs:element name="ProblemAction" type="tns:ProblemActionType"/>
+  <xs:complexType mixed="false" name="ProblemActionType">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:Action"/>
+      <xs:element minOccurs="0" name="SoapAction" type="xs:anyURI"/>
+    </xs:sequence>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8081/ApoteketRetryAdapter/services/hamtaMeddelande/v1</con:endpoint></con:endpoints><con:operation isOneWay="false" action="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1:HamtaMeddelanden" name="HamtaMeddelanden" bindingOperationName="HamtaMeddelanden" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="oneOkResponse"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/ApoteketRetryAdapter/services/hamtaMeddelande/v1</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <ns4:To xmlns:ns4="http://www.w3.org/2005/08/addressing" xmlns:ns3="urn:riv:druglogistics:dosedispensing:AvbestallOrginalforpackningResponder:1" xmlns:ns2="urn:riv:druglogistics:dosedispensing:1" xmlns="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1">APO-BAMYL</ns4:To>
+  </soap:Header>
+  <soap:Body>
+    <HamtaMeddelanden xmlns="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1" xmlns:ns2="urn:riv:druglogistics:dosedispensing:1" xmlns:ns3="urn:riv:druglogistics:dosedispensing:AvbestallOrginalforpackningResponder:1" xmlns:ns4="http://www.w3.org/2005/08/addressing">
+      <glnkod>1111111111</glnkod>
+      <Behorighetsinformation>
+        <ns2:fornamn>Lindsey</ns2:fornamn>
+        <ns2:efternamn>Pärlemo</ns2:efternamn>
+        <ns2:forskrivarkod>9001033</ns2:forskrivarkod>
+        <ns2:yrkeskod>LK</ns2:yrkeskod>
+        <ns2:arbetsplatskod>20131015422</ns2:arbetsplatskod>
+        <ns2:hsaid>TSE165565594230-9999</ns2:hsaid>
+      </Behorighetsinformation>
+      <Meddelandenutval>
+        <ns2:Meddelandetyp>PB</ns2:Meddelandetyp>
+        <ns2:Patientinformation>
+          <ns2:fornamn>x</ns2:fornamn>
+          <ns2:mellannamn>x</ns2:mellannamn>
+          <ns2:efternamn>x</ns2:efternamn>
+          <ns2:identitetstyp>P</ns2:identitetstyp>
+          <ns2:personid>190211139803</ns2:personid>
+        </ns2:Patientinformation>
+        <ns2:meddelandestatus>LO</ns2:meddelandestatus>
+        <ns2:forskrivarkod>9001033</ns2:forskrivarkod>
+      </Meddelandenutval>
+    </HamtaMeddelanden>
+  </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1:HamtaMeddelanden"/><con:wsrmConfig version="1.2"/></con:call><con:call name="hundredMessagesOkResponse"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/ApoteketRetryAdapter/services/hamtaMeddelande/v1</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <ns4:To xmlns:ns4="http://www.w3.org/2005/08/addressing" xmlns:ns3="urn:riv:druglogistics:dosedispensing:AvbestallOrginalforpackningResponder:1" xmlns:ns2="urn:riv:druglogistics:dosedispensing:1" xmlns="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1">APO-BAMYL</ns4:To>
+  </soap:Header>
+  <soap:Body>
+    <HamtaMeddelanden xmlns="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1" xmlns:ns2="urn:riv:druglogistics:dosedispensing:1" xmlns:ns3="urn:riv:druglogistics:dosedispensing:AvbestallOrginalforpackningResponder:1" xmlns:ns4="http://www.w3.org/2005/08/addressing">
+      <glnkod>5555555555</glnkod>
+      <Behorighetsinformation>
+        <ns2:fornamn>Lindsey</ns2:fornamn>
+        <ns2:efternamn>Pärlemo</ns2:efternamn>
+        <ns2:forskrivarkod>9001033</ns2:forskrivarkod>
+        <ns2:yrkeskod>LK</ns2:yrkeskod>
+        <ns2:arbetsplatskod>20131015422</ns2:arbetsplatskod>
+        <ns2:hsaid>TSE165565594230-9999</ns2:hsaid>
+      </Behorighetsinformation>
+      <Meddelandenutval>
+        <ns2:Meddelandetyp>PB</ns2:Meddelandetyp>
+        <ns2:Patientinformation>
+          <ns2:fornamn>x</ns2:fornamn>
+          <ns2:mellannamn>x</ns2:mellannamn>
+          <ns2:efternamn>x</ns2:efternamn>
+          <ns2:identitetstyp>P</ns2:identitetstyp>
+          <ns2:personid>190211139803</ns2:personid>
+        </ns2:Patientinformation>
+        <ns2:meddelandestatus>LO</ns2:meddelandestatus>
+        <ns2:forskrivarkod>9001033</ns2:forskrivarkod>
+      </Meddelandenutval>
+    </HamtaMeddelanden>
+  </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1:HamtaMeddelanden"/><con:wsrmConfig version="1.2"/></con:call><con:call name="retryThreeTimesAndReturnsOkResponse"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/ApoteketRetryAdapter/services/hamtaMeddelande/v1</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <ns4:To xmlns:ns4="http://www.w3.org/2005/08/addressing" xmlns:ns3="urn:riv:druglogistics:dosedispensing:AvbestallOrginalforpackningResponder:1" xmlns:ns2="urn:riv:druglogistics:dosedispensing:1" xmlns="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1">APO-BAMYL</ns4:To>
+  </soap:Header>
+  <soap:Body>
+    <HamtaMeddelanden xmlns="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1" xmlns:ns2="urn:riv:druglogistics:dosedispensing:1" xmlns:ns3="urn:riv:druglogistics:dosedispensing:AvbestallOrginalforpackningResponder:1" xmlns:ns4="http://www.w3.org/2005/08/addressing">
+      <glnkod>9999999991</glnkod>
+      <Behorighetsinformation>
+        <ns2:fornamn>Lindsey</ns2:fornamn>
+        <ns2:efternamn>Pärlemo</ns2:efternamn>
+        <ns2:forskrivarkod>9001033</ns2:forskrivarkod>
+        <ns2:yrkeskod>LK</ns2:yrkeskod>
+        <ns2:arbetsplatskod>20131015422</ns2:arbetsplatskod>
+        <ns2:hsaid>TSE165565594230-9999</ns2:hsaid>
+      </Behorighetsinformation>
+      <Meddelandenutval>
+        <ns2:Meddelandetyp>PB</ns2:Meddelandetyp>
+        <ns2:Patientinformation>
+          <ns2:fornamn>x</ns2:fornamn>
+          <ns2:mellannamn>x</ns2:mellannamn>
+          <ns2:efternamn>x</ns2:efternamn>
+          <ns2:identitetstyp>P</ns2:identitetstyp>
+          <ns2:personid>190211139803</ns2:personid>
+        </ns2:Patientinformation>
+        <ns2:meddelandestatus>LO</ns2:meddelandestatus>
+        <ns2:forskrivarkod>9001033</ns2:forskrivarkod>
+      </Meddelandenutval>
+    </HamtaMeddelanden>
+  </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1:HamtaMeddelanden"/><con:wsrmConfig version="1.2"/></con:call><con:call name="timeoutErrorResponse"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/ApoteketRetryAdapter/services/hamtaMeddelande/v1</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <ns4:To xmlns:ns4="http://www.w3.org/2005/08/addressing" xmlns:ns3="urn:riv:druglogistics:dosedispensing:AvbestallOrginalforpackningResponder:1" xmlns:ns2="urn:riv:druglogistics:dosedispensing:1" xmlns="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1">APO-BAMYL</ns4:To>
+  </soap:Header>
+  <soap:Body>
+    <HamtaMeddelanden xmlns="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1" xmlns:ns2="urn:riv:druglogistics:dosedispensing:1" xmlns:ns3="urn:riv:druglogistics:dosedispensing:AvbestallOrginalforpackningResponder:1" xmlns:ns4="http://www.w3.org/2005/08/addressing">
+      <glnkod>9999999990</glnkod>
+      <Behorighetsinformation>
+        <ns2:fornamn>Lindsey</ns2:fornamn>
+        <ns2:efternamn>Pärlemo</ns2:efternamn>
+        <ns2:forskrivarkod>9001033</ns2:forskrivarkod>
+        <ns2:yrkeskod>LK</ns2:yrkeskod>
+        <ns2:arbetsplatskod>20131015422</ns2:arbetsplatskod>
+        <ns2:hsaid>TSE165565594230-9999</ns2:hsaid>
+      </Behorighetsinformation>
+      <Meddelandenutval>
+        <ns2:Meddelandetyp>PB</ns2:Meddelandetyp>
+        <ns2:Patientinformation>
+          <ns2:fornamn>x</ns2:fornamn>
+          <ns2:mellannamn>x</ns2:mellannamn>
+          <ns2:efternamn>x</ns2:efternamn>
+          <ns2:identitetstyp>P</ns2:identitetstyp>
+          <ns2:personid>190211139803</ns2:personid>
+        </ns2:Patientinformation>
+        <ns2:meddelandestatus>LO</ns2:meddelandestatus>
+        <ns2:forskrivarkod>9001033</ns2:forskrivarkod>
+      </Meddelandenutval>
+    </HamtaMeddelanden>
+  </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1:HamtaMeddelanden"/><con:wsrmConfig version="1.2"/></con:call><con:call name="alwaysErrorResponse"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/ApoteketRetryAdapter/services/hamtaMeddelande/v1</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <ns4:To xmlns:ns4="http://www.w3.org/2005/08/addressing" xmlns:ns3="urn:riv:druglogistics:dosedispensing:AvbestallOrginalforpackningResponder:1" xmlns:ns2="urn:riv:druglogistics:dosedispensing:1" xmlns="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1">APO-BAMYL</ns4:To>
+  </soap:Header>
+  <soap:Body>
+    <HamtaMeddelanden xmlns="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1" xmlns:ns2="urn:riv:druglogistics:dosedispensing:1" xmlns:ns3="urn:riv:druglogistics:dosedispensing:AvbestallOrginalforpackningResponder:1" xmlns:ns4="http://www.w3.org/2005/08/addressing">
+      <glnkod>9999999999</glnkod>
+      <Behorighetsinformation>
+        <ns2:fornamn>Lindsey</ns2:fornamn>
+        <ns2:efternamn>Pärlemo</ns2:efternamn>
+        <ns2:forskrivarkod>9001033</ns2:forskrivarkod>
+        <ns2:yrkeskod>LK</ns2:yrkeskod>
+        <ns2:arbetsplatskod>20131015422</ns2:arbetsplatskod>
+        <ns2:hsaid>TSE165565594230-9999</ns2:hsaid>
+      </Behorighetsinformation>
+      <Meddelandenutval>
+        <ns2:Meddelandetyp>PB</ns2:Meddelandetyp>
+        <ns2:Patientinformation>
+          <ns2:fornamn>x</ns2:fornamn>
+          <ns2:mellannamn>x</ns2:mellannamn>
+          <ns2:efternamn>x</ns2:efternamn>
+          <ns2:identitetstyp>P</ns2:identitetstyp>
+          <ns2:personid>190211139803</ns2:personid>
+        </ns2:Patientinformation>
+        <ns2:meddelandestatus>LO</ns2:meddelandestatus>
+        <ns2:forskrivarkod>9001033</ns2:forskrivarkod>
+      </Meddelandenutval>
+    </HamtaMeddelanden>
+  </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:druglogistics:dosedispensing:HamtaMeddelandenResponder:1:HamtaMeddelanden"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>
