@@ -12,7 +12,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
     <parent>
         <groupId>se.skltp.adapterservices.druglogistics.dosdispensing</groupId>
         <artifactId>ApoteketRetryAdapter-parent</artifactId>
-        <version>1.0.0-RC1</version>
+        <version>1.0.0-RC2-SNAPSHOT</version>
     </parent>
     
     <artifactId>ApoteketRetryAdapter</artifactId>
