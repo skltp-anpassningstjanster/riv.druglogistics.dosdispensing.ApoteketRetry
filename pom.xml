@@ -30,6 +30,11 @@
 		<url>http://skltp.googlecode.com/svn/tp/vp/trunk/</url>
 	</scm>
 	-->
+    <scm>
+        <connection>scm:svn:https://skltpservices.googlecode.com/svn/AdapterServices/riv.druglogistics.dosdispensing/ApoteketRetryAdapter/trunk</connection>
+        <developerConnection>scm:svn:https://skltpservices.googlecode.com/svn/AdapterServices/riv.druglogistics.dosdispensing/ApoteketRetryAdapter/trunk</developerConnection>
+        <url>https://skltpservices.googlecode.com/svn/AdapterServices/riv.druglogistics.dosdispensing/ApoteketRetryAdapter/trunk</url>
+    </scm>
 
 	<modules>
 		<module>ApoteketRetryAdapter-schemas</module>
