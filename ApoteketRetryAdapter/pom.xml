@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- 
+<!--
 DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOING!
 [soi-toolkit.gen.version=0.6.0]
 [soi-toolkit.gen.type=services]
@@ -14,12 +14,12 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
         <artifactId>ApoteketRetryAdapter-parent</artifactId>
         <version>1.0.0-RC2-SNAPSHOT</version>
     </parent>
-    
+
     <artifactId>ApoteketRetryAdapter</artifactId>
     <packaging>mule</packaging>
     <name>${project.artifactId}</name>
 
-  	<dependencies>	
+  	<dependencies>
 
       <dependency>
   		  <groupId>${project.groupId}</groupId>
@@ -47,8 +47,8 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
   			<version>${soitoolkit.version}</version>
   			<type>pom</type>
   		</dependency>
-  
-    </dependencies> 
+
+    </dependencies>
 
     <build>
         <resources>
@@ -61,7 +61,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
             </resource>
         </resources>
 
-		<plugins>   
+		<plugins>
             <plugin>
                 <!-- Add mule-nature to the eclipse-.project-file -->
                 <artifactId>maven-eclipse-plugin</artifactId>
@@ -155,11 +155,11 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
                     </exclusions>
                 </configuration>
             </plugin>
-            
+
             <plugin>
               <artifactId>maven-jar-plugin</artifactId>
               <configuration>
-                <!-- 
+                <!--
                  if no classifier is declared, then a mvn install results in a file in
                  the local repo: ic2-1.0.0-SNAPSHOT.mule
                  which is a jar-file - only strangely named and with a bad extension
@@ -177,7 +177,33 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
                 </execution>
               </executions>
             </plugin>
-            
+
+						<plugin>
+						  <artifactId>maven-resources-plugin</artifactId>
+						  <executions>
+						    <execution>
+						    <id>copy-log4j-resource</id>
+						    <phase>prepare-package</phase>
+							<goals>
+						      <goal>copy-resources</goal>
+						    </goals>
+							<configuration>
+							<!--<outputDirectory>target/classes</outputDirectory> -->
+							<outputDirectory>${project.build.outputDirectory}</outputDirectory>
+							<resources>
+							  <resource>
+							    <directory>src/environment</directory>
+								  <includes>
+								    <include>log4j.xml</include>
+								    <include>log4j.dtd</include>
+								  </includes>
+							  </resource>
+							</resources>
+						  </configuration>
+					    </execution>
+					  </executions>
+					</plugin>
+
       </plugins>
 
     </build>
