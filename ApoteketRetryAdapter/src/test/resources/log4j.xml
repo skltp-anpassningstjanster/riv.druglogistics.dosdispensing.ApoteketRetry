@@ -85,6 +85,12 @@
     <logger name="httpclient.wire.content">
         <level value="FATAL"/>
     </logger>
+    
+    <!-- Monitoring logs to separate log file, additivity makes sure not logged twice -->
+    <logger name="se.skltp.adapterservices.monitoring" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="CONSOLE"/>
+    </logger>
 	
 	<root>
 		<priority value="WARN" />
