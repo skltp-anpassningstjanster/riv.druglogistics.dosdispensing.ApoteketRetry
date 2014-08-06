@@ -24,12 +24,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
-import org.mule.tck.junit4.FunctionalTestCase;
+import org.soitoolkit.commons.mule.test.junit4.AbstractTestCase;
 import org.soitoolkit.commons.mule.util.RecursiveResourceBundle;
 
 import se.riv.itintegration.monitoring.v1.PingForConfigurationResponseType;
 
-public class PingForconfigurationServiceIntegrationTest extends FunctionalTestCase {
+public class PingForconfigurationServiceIntegrationTest extends AbstractTestCase {
 
 	private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("ApoteketRetryAdapter-config",
 			"ApoteketRetryAdapter-config-override");
@@ -40,9 +40,10 @@ public class PingForconfigurationServiceIntegrationTest extends FunctionalTestCa
 		url = rb.getString("PINGFORCONFIGURATION_INBOUND_ENDPOINT");
 	}
 
-	@Override
 	protected String getConfigResources() {
-		return "PingForConfiguration-rivtabp21-service.xml," + "ApoteketRetryAdapter-common.xml";
+		return 	"soitoolkit-mule-jms-connector-activemq-embedded.xml," +
+				"PingForConfiguration-rivtabp21-service.xml," + 
+				"ApoteketRetryAdapter-common.xml";
 	}
 
 	@Test
