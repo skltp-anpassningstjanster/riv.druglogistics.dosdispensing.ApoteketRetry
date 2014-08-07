@@ -27,7 +27,7 @@
     <parent>
         <groupId>se.skltp.adapterservices.druglogistics.dosdispensing</groupId>
         <artifactId>ApoteketRetryAdapter-parent</artifactId>
-        <version>1.0.0-RC3-SNAPSHOT</version>
+        <version>1.0.0-RC3</version>
     </parent>
 	
 	<properties>

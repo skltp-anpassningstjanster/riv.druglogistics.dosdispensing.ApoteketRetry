@@ -14,7 +14,7 @@
 
 	<groupId>se.skltp.adapterservices.druglogistics.dosdispensing</groupId>
     <artifactId>ApoteketRetryAdapter-parent</artifactId>
-	<version>1.0.0-RC3-SNAPSHOT</version>
+	<version>1.0.0-RC3</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
 	
@@ -31,9 +31,9 @@
 	</scm>
 	-->
     <scm>
-        <connection>scm:svn:https://skltpservices.googlecode.com/svn/AdapterServices/riv.druglogistics.dosdispensing/ApoteketRetryAdapter/trunk</connection>
-        <developerConnection>scm:svn:https://skltpservices.googlecode.com/svn/AdapterServices/riv.druglogistics.dosdispensing/ApoteketRetryAdapter/trunk</developerConnection>
-        <url>https://skltpservices.googlecode.com/svn/AdapterServices/riv.druglogistics.dosdispensing/ApoteketRetryAdapter/trunk</url>
+        <connection>scm:svn:https://skltpservices.googlecode.com/svn/AdapterServices/riv.druglogistics.dosdispensing/ApoteketRetryAdapter/tags/ApoteketRetryAdapter-parent-1.0.0-RC3</connection>
+        <developerConnection>scm:svn:https://skltpservices.googlecode.com/svn/AdapterServices/riv.druglogistics.dosdispensing/ApoteketRetryAdapter/tags/ApoteketRetryAdapter-parent-1.0.0-RC3</developerConnection>
+        <url>https://skltpservices.googlecode.com/svn/AdapterServices/riv.druglogistics.dosdispensing/ApoteketRetryAdapter/tags/ApoteketRetryAdapter-parent-1.0.0-RC3</url>
     </scm>
 
 	<modules>
