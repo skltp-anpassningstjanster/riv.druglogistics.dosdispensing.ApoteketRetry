@@ -86,9 +86,10 @@
     <rest:config/>
 
     <spring:beans>
-  
-    <spring:import resource="classpath:soitoolkit-mule-http-connector.xml"/>
-  </spring:beans>
+    	<!-- import the common logger config -->
+    	<spring:import resource="classpath:tp-commons-mule-logging.xml" />
+    	<spring:import resource="classpath:soitoolkit-mule-http-connector.xml"/>
+    </spring:beans>
 
     <message-properties-transformer name="setJsonContentType" scope="outbound">
         <add-message-property key="Content-Type" value="application/json;charset=UTF-8"/>
