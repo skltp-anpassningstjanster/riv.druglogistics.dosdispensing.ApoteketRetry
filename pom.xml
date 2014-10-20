@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT 
-	YOU ARE DOING! [soi-toolkit.gen.version=0.3.1] [soi-toolkit.gen.type=integrationComponent] 
+<!-- DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT
+	YOU ARE DOING! [soi-toolkit.gen.version=0.3.1] [soi-toolkit.gen.type=integrationComponent]
 	[soi-toolkit.gen.createDate=2011-06-30T14:55:14.006+02:00] [soi-toolkit.gen.artifactId=vp] -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
@@ -17,7 +17,7 @@
 	<version>1.0.0-RC4-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
-	
+
 	<properties>
 		<compiler.target.version>1.6</compiler.target.version>
         <compiler.source.version>1.6</compiler.source.version>
@@ -30,11 +30,12 @@
 		<url>http://skltp.googlecode.com/svn/tp/vp/trunk/</url>
 	</scm>
 	-->
-    <scm>
-        <connection>scm:svn:https://skltpservices.googlecode.com/svn/AdapterServices/riv.druglogistics.dosdispensing/ApoteketRetryAdapter/trunk</connection>
-        <developerConnection>scm:svn:https://skltpservices.googlecode.com/svn/AdapterServices/riv.druglogistics.dosdispensing/ApoteketRetryAdapter/trunk</developerConnection>
-        <url>https://skltpservices.googlecode.com/svn/AdapterServices/riv.druglogistics.dosdispensing/ApoteketRetryAdapter/trunk</url>
-    </scm>
+	<scm>
+		<url>https://github.com/skltp-anpassningstjanster/riv.druglogistics.dosdispensing.ApoteketRetry</url>
+		<connection>scm:git:git://github.com/skltp-anpassningstjanster/riv.druglogistics.dosdispensing.ApoteketRetry.git</connection>
+		<developerConnection>scm:git:git://github.com/skltp-anpassningstjanster/riv.druglogistics.dosdispensing.ApoteketRetry.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
 
 	<modules>
 		<module>ApoteketRetryAdapter-schemas</module>
@@ -59,7 +60,7 @@
 					<configuration>
 						<properties>
 							<year>2013</year>
-							<copyright>Center for eHalsa i samverkan (CeHis). 
+							<copyright>Center for eHalsa i samverkan (CeHis).
 							&lt;http://cehis.se/&gt;</copyright>
 							<product>SKLTP</product>
 						</properties>
@@ -85,6 +86,17 @@
 						</mapping>
 						<useDefaultMapping>true</useDefaultMapping>
 					</configuration>
+				</plugin>
+				<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-release-plugin</artifactId>
+						<version>2.5.1</version>
+						<configuration>
+								<autoVersionSubmodules>true</autoVersionSubmodules>
+								<tagNameFormat>v@{project.version}</tagNameFormat>
+								<pushChanges>false</pushChanges>
+								<localCheckout>true</localCheckout>
+						</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
